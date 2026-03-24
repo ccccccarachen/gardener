@@ -54,7 +54,28 @@ From their answer, determine:
 
 **If not OpenClaw:** Skip this step. Tell the user: "Since you're not using OpenClaw, just run `/garden` whenever you want to check on your plants."
 
-### Step 4: Set Up Cron (OpenClaw only)
+### Step 4: Register Telegram Commands (Telegram only)
+
+**If the user is on Telegram**, register the bot commands so they appear in the "/" menu:
+
+```bash
+cd ${CLAUDE_SKILL_DIR}/scripts && ./register-telegram-commands.sh "<BOT_TOKEN>"
+```
+
+To get the bot token, ask the user or read it from OpenClaw's config.
+
+This registers these commands in Telegram's UI:
+- `/garden` — Show plant status
+- `/garden_add` — Add a new plant
+- `/garden_water` — Log watering
+- `/garden_fertilize` — Log fertilizing
+- `/garden_repot` — Log repotting
+- `/garden_tomb` — Move to graveyard
+- `/garden_graveyard` — View deceased plants
+- `/garden_info` — Show plant details
+- `/garden_setup` — Change settings
+
+### Step 5: Set Up Cron (OpenClaw only)
 
 **If OpenClaw:**
 
@@ -89,7 +110,7 @@ openclaw cron list
 openclaw cron run <jobId>
 ```
 
-### Step 5: Save Config
+### Step 6: Save Config
 
 Create the initial garden.json:
 ```bash
@@ -110,7 +131,7 @@ cat > ${CLAUDE_SKILL_DIR}/garden.json << 'EOF'
 EOF
 ```
 
-### Step 6: First Plant
+### Step 7: First Plant
 
 Ask: "Would you like to add your first plant now?"
 
@@ -119,6 +140,13 @@ If yes, run the Add Plant flow.
 ---
 
 ## Commands
+
+**Command Aliases:** Telegram doesn't support spaces in commands, so both formats work:
+- `/garden add` = `/garden_add`
+- `/garden water` = `/garden_water`
+- etc.
+
+Treat underscores and spaces interchangeably when parsing commands.
 
 ### `/garden` — Overview & Daily Check
 
