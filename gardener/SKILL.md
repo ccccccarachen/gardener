@@ -33,7 +33,9 @@ If NOT, run the onboarding flow:
 
 Tell the user:
 
-"Welcome to Gardener! I'll help you track your houseplants and remind you when they need water, fertilizer, or repotting.
+"🌱 Welcome to Gardener!
+
+I'll help you track your houseplants and remind you when they need water, fertilizer, or repotting.
 
 I adjust care schedules based on your location and season — plants need different care in summer vs winter."
 
@@ -159,17 +161,17 @@ Read `garden.json` and show:
 
 Example output:
 ```
-Garden Check — Seattle, March 23 (Spring)
+🌱 Garden Check — Seattle, March 23 (Spring)
 
-NEEDS ATTENTION:
-- Water "Monty" (Monstera) — last watered 8 days ago
-- Fertilize "Goldie" (Pothos) — monthly spring feeding due
+⚠️ NEEDS ATTENTION:
+• 💧 Water "Monty" (Monstera) — last watered 8 days ago
+• 🌿 Fertilize "Goldie" (Pothos) — monthly spring feeding due
 
-ALL GOOD:
-- "Frank" (Fiddle Leaf Fig) — watered 2 days ago
-- "Snakey" (Snake Plant) — watered 5 days ago
+✅ ALL GOOD:
+• "Frank" (Fiddle Leaf Fig) — watered 2 days ago
+• "Snakey" (Snake Plant) — watered 5 days ago
 
-Graveyard: 2 plants (type '/garden graveyard' to pay respects)
+🪦 Graveyard: 2 plants (type '/garden_graveyard' to pay respects)
 ```
 
 ### `/garden add` — Add New Plant
@@ -208,13 +210,13 @@ Interactive flow:
 }
 ```
 
-8. **Care info**: After adding, briefly tell the user the plant's basic care needs based on your knowledge.
+8. **Care info**: After adding, confirm with "🌱 Added [nickname] ([species]) to your garden!" and briefly tell the user the plant's basic care needs.
 
 ### `/garden water <nickname>` — Log Watering
 
 Find the plant by nickname (fuzzy match OK), update `lastWatered` to today's date.
 
-Confirm: "Logged watering for Monty (Monstera). Next watering in about 7-10 days."
+Confirm: "💧 Logged watering for Monty (Monstera). Next watering in about 7-10 days."
 
 If multiple plants match, ask which one.
 If no match, suggest similar names or ask to clarify.
@@ -223,13 +225,13 @@ If no match, suggest similar names or ask to clarify.
 
 Find the plant, update `lastFertilized` to today's date.
 
-Confirm: "Logged fertilizing for Monty (Monstera). Next feeding in about 4 weeks."
+Confirm: "🌿 Logged fertilizing for Monty (Monstera). Next feeding in about 4 weeks."
 
 ### `/garden repot <nickname>` — Log Repotting
 
 Find the plant, update `lastRepotted` to today's date, set `potStatus` to "repotted".
 
-Confirm: "Logged repotting for Monty (Monstera). Next repot check in about 1-2 years."
+Confirm: "🪴 Logged repotting for Monty (Monstera). Next repot check in about 1-2 years."
 
 ### `/garden tomb <nickname>` — Move to Graveyard
 
@@ -241,7 +243,7 @@ Move plant from `plants` array to `tomb` array, add:
 
 Output a brief memorial:
 ```
-Rest in peace, Monty (Monstera Deliciosa)
+🪦 Rest in peace, Monty (Monstera Deliciosa)
 June 2024 — March 2025
 
 Cause: overwatering
@@ -253,14 +255,14 @@ Monty has been moved to the graveyard.
 
 List all plants in the tomb:
 ```
-Plant Graveyard
+🪦 Plant Graveyard
 
-- Fernie (Boston Fern) — Jan 2024 to Nov 2024 — underwatering
-- Cactus Jack (Cactus) — Mar 2023 to Aug 2024 — root rot
+• Fernie (Boston Fern) — Jan 2024 to Nov 2024 — underwatering
+• Cactus Jack (Cactus) — Mar 2023 to Aug 2024 — root rot
 
 Total: 2 plants
 
-May they rest in peace.
+May they rest in peace. 🕊️
 ```
 
 ### `/garden setup` — Re-run Setup
@@ -271,21 +273,21 @@ Allow user to change location, timezone, or alert time. Update garden.json and c
 
 Show full details for one plant:
 ```
-Monty (Monstera Deliciosa)
+🌱 Monty (Monstera Deliciosa)
 
-Added: June 15, 2024 (9 months ago)
-Location: Indoor
-Pot: Repotted on August 10, 2024
+📅 Added: June 15, 2024 (9 months ago)
+📍 Location: Indoor
+🪴 Pot: Repotted on August 10, 2024
 
-Last watered: March 20, 2025 (3 days ago)
-Last fertilized: March 1, 2025 (22 days ago)
-Last repotted: August 10, 2024 (7 months ago)
+💧 Last watered: March 20, 2025 (3 days ago)
+🌿 Last fertilized: March 1, 2025 (22 days ago)
+🪴 Last repotted: August 10, 2024 (7 months ago)
 
-Care notes for Monstera:
-- Water every 7-14 days (let top 2" dry out)
-- Fertilize monthly in spring/summer
-- Repot every 1-2 years
-- Bright indirect light
+📋 Care notes for Monstera:
+• Water every 7-14 days (let top 2" dry out)
+• Fertilize monthly in spring/summer
+• Repot every 1-2 years
+• Bright indirect light
 ```
 
 ---
