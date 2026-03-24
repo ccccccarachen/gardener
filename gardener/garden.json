@@ -1,0 +1,13 @@
+{
+  "setupComplete": false,
+  "platform": null,
+  "location": {
+    "city": null,
+    "hemisphere": null,
+    "climate": null,
+    "timezone": null
+  },
+  "alertTime": null,
+  "plants": [],
+  "tomb": []
+}
