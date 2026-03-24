@@ -155,21 +155,26 @@ Treat underscores and spaces interchangeably when parsing commands.
 Read `garden.json` and show:
 
 1. **Current context**: Location, season, date
-2. **Needs attention**: Plants due for watering, fertilizing, or repotting
-3. **All good**: Plants that don't need anything today
-4. **Graveyard count**: If any plants in tomb
+2. **Needs attention**: Plants due for watering, fertilizing, or repotting TODAY
+3. **Upcoming (7 days)**: What's coming up in the next week
+4. **All good**: Plants that don't need anything in the next 7 days
+5. **Graveyard count**: If any plants in tomb
 
 Example output:
 ```
 🌱 Garden Check — Seattle, March 23 (Spring)
 
-⚠️ NEEDS ATTENTION:
+⚠️ NEEDS ATTENTION TODAY:
 • 💧 Water "Monty" (Monstera) — last watered 8 days ago
 • 🌿 Fertilize "Goldie" (Pothos) — monthly spring feeding due
 
+📅 UPCOMING (next 7 days):
+• 💧 Water "Frank" (Fiddle Leaf Fig) — in 3 days
+• 💧 Water "Snakey" (Snake Plant) — in 5 days
+• 🪴 Repot "Goldie" (Pothos) — in 6 days (been in nursery pot 6 months)
+
 ✅ ALL GOOD:
-• "Frank" (Fiddle Leaf Fig) — watered 2 days ago
-• "Snakey" (Snake Plant) — watered 5 days ago
+• "Cactus" (Cactus) — next watering in 14 days
 
 🪦 Graveyard: 2 plants (type '/garden_graveyard' to pay respects)
 ```
@@ -320,18 +325,29 @@ Read `references/plant-care.md` for specific plant care data.
 **Watering alerts:**
 - Calculate days since `lastWatered`
 - Compare to plant's watering interval (from references or general knowledge)
-- Alert if overdue or due today
+- **Today**: Alert if overdue or due today
+- **Upcoming**: Show if due within next 7 days (e.g., "in 3 days")
 
 **Fertilizing alerts (spring/summer only):**
 - Calculate days since `lastFertilized`
 - Most plants: monthly during growing season
-- Alert if overdue
+- **Today**: Alert if overdue
+- **Upcoming**: Show if due within next 7 days
 
 **Repotting alerts:**
 - Calculate time since `lastRepotted` or `acquired` (if never repotted)
 - Most plants: every 1-2 years
 - Only alert in spring (best time to repot)
-- Alert if in nursery pot for >6 months
+- **Today**: Alert if in nursery pot for >6 months
+- **Upcoming**: Show if approaching 6 months in nursery pot
+
+**Calculating "days until due":**
+```
+daysUntilDue = wateringInterval - daysSinceLastWatered
+```
+- If `daysUntilDue <= 0`: Show in "NEEDS ATTENTION TODAY"
+- If `daysUntilDue` is 1-7: Show in "UPCOMING"
+- If `daysUntilDue > 7`: Show in "ALL GOOD"
 
 ---
 
