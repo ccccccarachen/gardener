@@ -165,19 +165,21 @@ Example output:
 🌱 Garden Check — Seattle, March 23 (Spring)
 
 ⚠️ NEEDS ATTENTION TODAY:
-• 💧 Water "Monty" (Monstera) — last watered 8 days ago
-• 🌿 Fertilize "Goldie" (Pothos) — monthly spring feeding due
+• 💧 Water "Monty" (Monstera)
+• 🌿 Fertilize "Goldie" (Pothos)
 
-📅 UPCOMING (next 7 days):
-• 💧 Water "Frank" (Fiddle Leaf Fig) — in 3 days
-• 💧 Water "Snakey" (Snake Plant) — in 5 days
-• 🪴 Repot "Goldie" (Pothos) — in 6 days (been in nursery pot 6 months)
+📅 UPCOMING:
+• In 3 days: 💧 water "Frank", 💧 water "Snakey"
+• In 5 days: 🌿 fertilize "Monty"
+• In 6 days: 🪴 repot "Goldie"
 
 ✅ ALL GOOD:
-• "Cactus" (Cactus) — next watering in 14 days
+• "Cactus" — next watering in 14 days
 
 🪦 Graveyard: 2 plants (type '/garden_graveyard' to pay respects)
 ```
+
+**Grouping upcoming tasks:** Group tasks by the number of days until due, listing all tasks for that day on one line.
 
 ### `/garden add` — Add New Plant
 
