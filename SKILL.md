@@ -61,7 +61,7 @@ From their answer, determine:
 **If the user is on Telegram**, register the bot commands so they appear in the "/" menu:
 
 ```bash
-cd ${CLAUDE_SKILL_DIR}/scripts && ./register-telegram-commands.sh "<BOT_TOKEN>"
+node ${CLAUDE_SKILL_DIR}/scripts/register-telegram-commands.js "<BOT_TOKEN>"
 ```
 
 To get the bot token, ask the user or read it from OpenClaw's config.
